@@ -101,7 +101,7 @@ int main()
     isPalindrome(str);
     return 0;
 }
-*/
+
 
 #include <stdio.h>
 void main()
@@ -197,3 +197,4 @@ void main()
         printf("\nThe element not found...");
     }
 }
+*/
