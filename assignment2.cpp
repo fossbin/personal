@@ -9,13 +9,16 @@ private:
     float salary{}, allowance{};
 
 public:
-    employee()
-    {
+//Constructor to assign a default NULL value to all the members of class employee
+    employee()                                               
+    {                                      
         empno = 0;
         name = "NULL";
         salary = 0;
         allowance = 0;
     }
+
+//Overloaded function input for giving predefined values for a new employee (eg:salary, allowance)  
     void input(std::string n, int num)
     {
         name = n;
@@ -23,6 +26,8 @@ public:
         salary = 30000;
         allowance = 10000;
     }
+
+//Overloaded function input for accepting the info of a exisiting employee i.e. their info and expenses
     void input(float s, std::string n, float a, int num)
     {
         empno = num;
@@ -30,6 +35,8 @@ public:
         salary = s;
         allowance = a;
     }
+
+//Operator overloading for the purposes of giving the employee a raise when needed
     employee operator++(int)
     {
         employee e = *this;
@@ -37,6 +44,8 @@ public:
         allowance += 500;
         return e;
     }
+
+//Operator overloading for the purpose of deducting the salary of an employee
     employee operator--(int)
     {
         employee e = *this;
@@ -44,6 +53,8 @@ public:
         allowance -= 500;
         return e;
     }
+
+//Operator overloading to copy values from one employee object to another
     employee operator=(employee e)
     {
         empno = e.empno;
@@ -52,21 +63,27 @@ public:
         allowance = e.allowance;
         return *this;
     }
+
+//A normal display member function of class employee
     void disp()
     {
         std::cout << "\nEmpno: " << empno << "\t\tEmployee Name: " << name;
         std::cout << "\nSalary: " << salary << "\t\tAllowance: " << allowance;
         std::cout << "\n";
     }
+
+//A few friend functions have been declared for access private members of the classes
+//Without adding extra unnecessary member functions 
     friend void del(int n);
     friend void bonus(int num);
     friend void ded(int num);
-    ~employee()
-    {
-        //Destructor called
-    }
-} emp[15];
-int n{0};bool check{0};
+
+//A userdefined destructor altho works as a default destructor
+    ~employee(){}
+} emp[15];                      //Global variables including a class arrray which can be accessed by 
+int n{0};bool check{0};         //functions including the main()
+
+//Function for the purpose of adding new employees depending on whether they are new or exisiting 
 employee add(employee e1)
 {
     int ch, n;
@@ -95,6 +112,8 @@ employee add(employee e1)
     }
     return e1;
 }
+
+//Function to delete employees from the registry 
 void del(int num)
 {
     if(::n==0)
@@ -113,6 +132,8 @@ void del(int num)
             }
     }
 }
+
+//A function used to allocate bonuses to a specific employee
 void bonus(int num)
 {
     std::cout << "\nEmployee has been awarded bonus\n";
@@ -123,6 +144,8 @@ void bonus(int num)
             break;
         }
 }
+
+//A function to deduct pay of a specific employee
 void ded(int num)
 {
     std::cout << "\nEmployee's pay has been deducted\n";
@@ -134,6 +157,8 @@ void ded(int num)
             break;
         }
 }
+
+//main() of the program
 int main()
 {
     int ch, num;
