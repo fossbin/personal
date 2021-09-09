@@ -52,19 +52,28 @@ public:
         allowance = e.allowance;
         return *this;
     }
-    friend void disp(employee e);
+    void disp()
+    {
+        std::cout << "\nEmpno: " << empno << "\t\tEmployee Name: " << name;
+        std::cout << "\nSalary: " << salary << "\t\tAllowance: " << allowance;
+        std::cout << "\n";
+    }
     friend void del(int n);
+    friend void bonus(int num);
+    friend void ded(int num);
     ~employee()
     {
         //Destructor called
     }
 } emp[15];
-int n{0};
-void add(employee e1)
+int n{0};bool check{0};
+employee add(employee e1)
 {
     int ch, n;
     float s, a;
     std::string name;
+    if(::check==1)
+        ::++n;
     std::cout << "\n1)Exisiting Employee\t\t2)New employee\nEnter your choice: ";
     std::cin >> ch;
     if (ch == 1)
@@ -84,41 +93,52 @@ void add(employee e1)
         std::getline(std::cin >> std::ws, name);
         e1.input(name, n);
     }
+    return e1;
 }
 void del(int num)
 {
-    employee temp;
-    for (int i = 0; i < n; i++)
-        if (num == emp[i].empno)
-        { 
-            for(int j=i;j<n;j++)    
-                emp[j] = emp[j + 1];
+    if(::n==0)
+        std::cout<<"\nNo employees found";
+    else {
+        for (int i = 0; i < n; i++)
+            if (num == emp[i].empno)
+            { 
+                std::cout<<"\nDetails of the Employee";
+                emp[i].disp();
+                for(int j=i;j<n;j++)    
+                    emp[j] = emp[j + 1];
+                break;
+                ::--n;
+                ::check=1;
+            }
+    }
+}
+void bonus(int num)
+{
+    std::cout << "\nEmployee has been awarded bonus\n";
+    for(int i=0;i<n;i++)
+        if(emp[i].empno==num) {
+            emp[i]++;
+            emp[i].disp();
             break;
         }
 }
-void bonus(int n)
-{
-    std::cout << "\nEmployee has been awarded bonus\n";
-    emp[n]++;
-    disp(emp[n]);
-}
-void ded(int n)
+void ded(int num)
 {
     std::cout << "\nEmployee's pay has been deducted\n";
-    emp[n]--;
-    disp(emp[n]);
-}
-void disp(employee e)
-{
-    std::cout << "\nEmpno: " << e.empno << "\t\tEmployee Name: " << e.name;
-    std::cout << "\nSalary: " << e.salary << "\t\tAllowance: " << e.allowance;
-    std::cout << "\n";
+    for (int i = 0; i < n; i++)
+        if (emp[i].empno == num)
+        {
+            emp[i]--;
+            emp[i].disp();
+            break;
+        }
 }
 int main()
 {
     int ch, num;
     std::cout << "\nEnter Number of Employees: ";
-    std::cin >> n;
+    std::cin >>::n;
     while (1)
     {
         std::cout << "\nMENU\n1.Add Employee\n2.Delete Employee\n3.Award Bonus\n4.Deduction";
@@ -129,30 +149,30 @@ int main()
 
         case 1:
             for (int i = 0; i < n; i++)
-                add(emp[i]);
+                emp[i]=add(emp[i]);
             break;
 
         case 2:
-            std::cout << "\nEnter Empno of employee: ";
+            std::cout << "Enter Empno of employee: ";
             std::cin >> num;
             del(num);
             break;
 
         case 3:
-            std::cout << "\nEnter Empno of employee: ";
+            std::cout << "Enter Empno of employee: ";
             std::cin >> num;
             bonus(num);
             break;
 
         case 4:
-            std::cout << "\nEnter Empno of employee: ";
+            std::cout << "Enter Empno of employee: ";
             std::cin >> num;
             ded(num);
             break;
 
         case 5:
-            for (int i = 0; i < n; i++)
-                disp(emp[i]);
+            for (int i = 0; i < ::n; i++)
+                emp[i].disp();
             break;
 
         case 6:
