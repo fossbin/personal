@@ -90,8 +90,8 @@ employee add(employee e1)
     float s, a;
     std::string name;
     if(::check==1)
-        ::++n;
-    std::cout << "\n1)Exisiting Employee\t\t2)New employee\nEnter your choice: ";
+        ::n++;
+    std::cout << "\n1)Exisiting Employee\t\t2)New Employee\nEnter your choice: ";
     std::cin >> ch;
     if (ch == 1)
     {
@@ -127,7 +127,7 @@ void del(int num)
                 for(int j=i;j<n;j++)    
                     emp[j] = emp[j + 1];
                 break;
-                ::--n;
+                ::n--;
                 ::check=1;
             }
     }
