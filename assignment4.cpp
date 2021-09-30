@@ -123,8 +123,6 @@ int main()
         if(ch!=1 && ch!=2)
             throw badch();
         details(ch,&e,&m);
-        e.disp();
-        m.disp();
         std::cout<<"\nAwarding Bonuses\n";
         e++;
         m++;
