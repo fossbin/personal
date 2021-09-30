@@ -24,7 +24,7 @@ public:
             throw invalid();
         std::getline(std::cin>>std::ws,name);
         for (int i = 0; i < name.length(); i++)
-            if (std::isdigit(name[i]) == 0)
+            if (std::isdigit(name[i]) != 0)
                 throw invalid();
         salary = 30000;
         allowance = 10000;
@@ -39,7 +39,7 @@ public:
                 throw invalid();
             std::getline(std::cin >> std::ws, name);
             for(int i=0;i<name.length();i++)
-                if (std::isdigit(name[i]) == 0)
+                if (std::isdigit(name[i]) != 0)
                     throw invalid();
             std::cin>>salary>>allowance;
         }
