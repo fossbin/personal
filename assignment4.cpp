@@ -59,14 +59,6 @@ public:
         allowance -= 500;
         return e;
     }
-    employee operator=(employee e)
-    {
-        empno = e.empno;
-        name = e.name;
-        salary = e.salary;
-        allowance = e.allowance;
-        return *this;
-    }
     void disp()
     {
         std::cout << "\nEmpno: " << empno << "\t\tEmployee Name: " << name;
@@ -98,14 +90,6 @@ class manager:public employee
             salary -= 5000;
             allowance -= 2000;
             return e;
-        }
-        manager operator=(manager e)
-        {
-            empno = e.empno;
-            name = e.name;
-            salary = e.salary;
-            allowance = e.allowance;
-            return *this;
         }
 };
 void details(int n,employee *e,manager *m)
