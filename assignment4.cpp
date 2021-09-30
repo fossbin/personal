@@ -61,8 +61,7 @@ public:
     void disp()
     {
         std::cout << "\nEmpno: " << empno << "\t\tEmployee Name: " << name;
-        std::cout << "\nSalary: " << salary << "\t\tAllowance: " << allowance;
-        std::cout << "\n";
+        std::cout << "\nSalary: " << salary << "\t\tAllowance: " << allowance<< "\n";
     }
     ~employee() {}
 };
