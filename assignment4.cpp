@@ -41,8 +41,7 @@ public:
             for(int i=0;i<name.length();i++)
                 if (std::isdigit(name[i]) == 0)
                     throw invalid();
-            std::cin>>salary;
-            std::cin>>allowance;
+            std::cin>>salary>>allowance;
         }
     }
     employee operator++(int)
